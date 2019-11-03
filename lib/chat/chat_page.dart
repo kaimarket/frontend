@@ -35,7 +35,6 @@ class ChatListsState extends State<ChatLists> {
     if (res.statusCode == 200) {
       if (mounted) {
         setState(() {
-          log.i(res.data);
           chats = res.data
               .map((chat) {
                 return Chat.fromJson(chat);
@@ -57,10 +56,12 @@ class ChatListsState extends State<ChatLists> {
           style: TextStyle(fontSize: screenAwareSize(16.0, context)),
         ),
       ),
-      body: StreamBuilder(
+      body: StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance.collection('UserRooms').snapshots(),
-        builder: (context, snapshot) {
+        builder: (context,  snapshot) {
+          if (snapshot.hasError) log.i(snapshot.error);
           if (!snapshot.hasData) return const Text('Loading..');
+          log.i(snapshot.data);
           return ListView.separated(
             physics: BouncingScrollPhysics(),
             padding: EdgeInsets.only(bottom: screenAwareSize(60.0, context)),
