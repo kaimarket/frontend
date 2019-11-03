@@ -8,7 +8,7 @@ class Category {
 
   Category({this.name, this.id, this.icon});
 
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,

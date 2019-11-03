@@ -22,8 +22,7 @@ dependencies:
   flutter_spinkit: ^3.1.0
   font_awesome_flutter: ^8.4.0
   flutter_facebook_login: ^2.0.1
-  google_sign_in: ^4.0.3
-  firebase_auth: ^0.11.1+7
+  google_sign_in: ^4.0.11
   # flutter_naver_login: ^0.3.1
   multi_image_picker: ^4.3.4
   adhara_socket_io: ^0.2.0
@@ -31,8 +30,8 @@ dependencies:
   dio: ^2.1.10
   shared_preferences: ^0.5.3+2
   carousel_pro: ^1.0.0
-  firebase_messaging: ^5.1.0
-  google_maps_flutter: ^0.5.21+3
+  firebase_messaging: ^5.1.6
+  google_maps_flutter: ^0.5.21+8
   image_picker: ^0.6.0+15
   fluttertoast: ^3.1.0
   html: ^0.14.0+2
@@ -47,8 +46,7 @@ dependencies:
   throttling: ^0.8.0
   flushbar: ^1.8.2
   after_layout: ^1.0.7+2
-  json_serializable: ^3.1.0
-  json_annotation: ^3.0.0
+  json_annotation: ^2.4.0
   timeago: ^2.0.18
   rxdart: ^0.22.1+1
 
@@ -60,6 +58,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: ^1.6.5
+  json_serializable: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
@@ -72,8 +71,8 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/images/
-   - assets/avatar/
+    - assets/images/
+    - assets/avatar/
   #  - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -89,5 +88,4 @@ flutter:
       fonts:
         - asset: assets/fonts/icon_custom.ttf
   #       - asset: assets/fonts/ic_naver_.ttf
-  #       - asset: assets/fonts/icon_beauty.ttf 
-
+  #       - asset: assets/fonts/icon_beauty.ttf
