@@ -2,6 +2,7 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shimmer/shimmer.dart';
@@ -127,9 +128,9 @@ class _PostViewPageState extends State<PostViewPage> {
                     ),
                   ),
                   _buildAppBar(),
-                  loggedUserId == post.user.id
+                  (loggedUserId == post.user.id)
                       ? _buildSellerBottomTab()
-                      : _buildBottomTab(),
+                      : _buildBottomTab()
                 ],
               ),
             ),
@@ -137,6 +138,121 @@ class _PostViewPageState extends State<PostViewPage> {
         );
       },
     );
+  }
+
+  Widget _buildSellCompleteBottomTab() {
+    return Positioned(
+        bottom: 0.0,
+        left: 0.0,
+        right: 0.0,
+        child: Container(
+            height: screenAwareSize(50.0, context),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 3.0,
+                    spreadRadius: -3.0,
+                    offset: Offset(0, -3)),
+              ],
+              color: Colors.white,
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Expanded(
+                    child: FlatButton(
+                      onPressed: post.isBook
+                          ? () {
+                              Book book = new Book(
+                                title: post.title,
+                                image: post.bookImage,
+                                author: post.bookAuthor,
+                                price: post.bookPrice,
+                                pubdate: post.bookPubDate,
+                                publisher: post.bookPublisher,
+                              );
+                              return Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => PostBookPage(
+                                    book: book,
+                                    post: post,
+                                  ),
+                                ),
+                              );
+                            }
+                          : () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => PostPage(post: post),
+                                ),
+                              );
+                            },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(
+                            Icons.exit_to_app,
+                            color: Colors.grey,
+                            size: screenAwareSize(20.0, context),
+                          ),
+                          SizedBox(width: 7.0),
+                          Text('판매완료',
+                              style: TextStyle(
+                                  color: Colors.grey, fontSize: 14.0)),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: FlatButton(
+                      onPressed: () async {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: new Text("삭제하기"),
+                                content: new Text("정말로 삭제하시겠습니까?"),
+                                actions: <Widget>[
+                                  new FlatButton(
+                                    child: new Text("No"),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  new FlatButton(
+                                    child: new Text("Yes"),
+                                    onPressed: () async {
+                                      final postBloc =
+                                          BlocProvider.of<PostBloc>(context);
+                                      log.i(post.id);
+                                      postBloc.add(PostDelete(postId: post.id));
+                                      Navigator.of(context).pop();
+                                      Navigator.of(context).pop();
+                                    },
+                                  )
+                                ],
+                              );
+                            });
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(
+                            Icons.remove,
+                            color: Colors.grey,
+                            size: screenAwareSize(14.5, context),
+                          ),
+                          SizedBox(width: 7.0),
+                          Text('삭제하기',
+                              style: TextStyle(
+                                  fontSize: 14.0, color: Colors.grey)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ])));
   }
 
   Widget _buildAppBar() {
@@ -204,155 +320,313 @@ class _PostViewPageState extends State<PostViewPage> {
     else if (post.status == 1)
       _currentStatus = '예약중';
     else if (post.status == 2) _currentStatus = '판매완료';
-
-    return Positioned(
-        bottom: 0.0,
-        left: 0.0,
-        right: 0.0,
-        child: Container(
-            height: screenAwareSize(50.0, context),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 3.0,
-                    spreadRadius: -3.0,
-                    offset: Offset(0, -3)),
-              ],
-              color: Colors.white,
-            ),
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Expanded(
-                    child: FlatButton(
-                      onPressed: post.isBook
-                          ? () {
-                              Book book = new Book(
-                                title: post.title,
-                                image: post.bookImage,
-                                author: post.bookAuthor,
-                                price: post.bookPrice,
-                                pubdate: post.bookPubDate,
-                                publisher: post.bookPublisher,
-                              );
-                              return Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => PostBookPage(
-                                    book: book,
-                                    post: post,
+    if (post.status == 2) {
+      return Positioned(
+          bottom: 0.0,
+          left: 0.0,
+          right: 0.0,
+          child: Container(
+              height: screenAwareSize(50.0, context),
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 3.0,
+                      spreadRadius: -3.0,
+                      offset: Offset(0, -3)),
+                ],
+                color: Colors.white,
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Expanded(
+                      child: FlatButton(
+                        onPressed: post.isBook
+                            ? () {
+                                Book book = new Book(
+                                  title: post.title,
+                                  image: post.bookImage,
+                                  author: post.bookAuthor,
+                                  price: post.bookPrice,
+                                  pubdate: post.bookPubDate,
+                                  publisher: post.bookPublisher,
+                                );
+                                return Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => PostBookPage(
+                                      book: book,
+                                      post: post,
+                                    ),
                                   ),
-                                ),
-                              );
-                            }
-                          : () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => PostPage(post: post),
-                                ),
-                              );
-                            },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(
-                            Icons.edit,
-                            color: Colors.grey,
-                            size: screenAwareSize(14.0, context),
-                          ),
-                          SizedBox(width: 7.0),
-                          Text('수정하기',
-                              style: TextStyle(
-                                  color: Colors.grey, fontSize: 14.0)),
-                        ],
+                                );
+                              }
+                            : () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => PostPage(post: post),
+                                  ),
+                                );
+                              },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(
+                              Icons.exit_to_app,
+                              color: Colors.grey,
+                              size: screenAwareSize(20.0, context),
+                            ),
+                            SizedBox(width: 7.0),
+                            Text('판매완료',
+                                style: TextStyle(
+                                    color: Colors.grey, fontSize: 14.0)),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: FlatButton(
-                      onPressed: () async {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: new Text("삭제하기"),
-                                content: new Text("정말로 삭제하시겠습니까?"),
-                                actions: <Widget>[
-                                  new FlatButton(
-                                    child: new Text("No"),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                  new FlatButton(
-                                    child: new Text("Yes"),
-                                    onPressed: () async {
-                                      final postBloc =
-                                          BlocProvider.of<PostBloc>(context);
-                                      log.i(post.id);
-                                      postBloc.add(PostDelete(postId: post.id));
-                                      Navigator.of(context).pop();
-                                      Navigator.of(context).pop();
-                                    },
-                                  )
-                                ],
-                              );
-                            });
-                      },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(
-                            Icons.remove,
-                            color: Colors.grey,
-                            size: screenAwareSize(14.5, context),
-                          ),
-                          SizedBox(width: 7.0),
-                          Text('삭제하기',
-                              style: TextStyle(
-                                  fontSize: 14.0, color: Colors.grey)),
-                        ],
+                    Expanded(
+                      child: FlatButton(
+                        onPressed: () async {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: new Text("삭제하기"),
+                                  content: new Text("정말로 삭제하시겠습니까?"),
+                                  actions: <Widget>[
+                                    new FlatButton(
+                                      child: new Text("No"),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                    new FlatButton(
+                                      child: new Text("Yes"),
+                                      onPressed: () async {
+                                        final postBloc =
+                                            BlocProvider.of<PostBloc>(context);
+                                        log.i(post.id);
+                                        postBloc
+                                            .add(PostDelete(postId: post.id));
+                                        Navigator.of(context).pop();
+                                        Navigator.of(context).pop();
+                                      },
+                                    )
+                                  ],
+                                );
+                              });
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(
+                              Icons.remove,
+                              color: Colors.grey,
+                              size: screenAwareSize(14.5, context),
+                            ),
+                            SizedBox(width: 7.0),
+                            Text('삭제하기',
+                                style: TextStyle(
+                                    fontSize: 14.0, color: Colors.grey)),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      buttonColor: Colors.amber,
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                          items: _status.map((String dropDownStringItem) {
-                            return DropdownMenuItem<String>(
-                              value: dropDownStringItem,
-                              child: Text(dropDownStringItem),
-                            );
-                          }).toList(),
-                          onChanged: (String newValueSelected) {
-                            setState(() {
+                  ])));
+    } else {
+      return Positioned(
+          bottom: 0.0,
+          left: 0.0,
+          right: 0.0,
+          child: Container(
+              height: screenAwareSize(50.0, context),
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 3.0,
+                      spreadRadius: -3.0,
+                      offset: Offset(0, -3)),
+                ],
+                color: Colors.white,
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Expanded(
+                      child: FlatButton(
+                        onPressed: post.isBook
+                            ? () {
+                                Book book = new Book(
+                                  title: post.title,
+                                  image: post.bookImage,
+                                  author: post.bookAuthor,
+                                  price: post.bookPrice,
+                                  pubdate: post.bookPubDate,
+                                  publisher: post.bookPublisher,
+                                );
+                                return Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => PostBookPage(
+                                      book: book,
+                                      post: post,
+                                    ),
+                                  ),
+                                );
+                              }
+                            : () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => PostPage(post: post),
+                                  ),
+                                );
+                              },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(
+                              Icons.edit,
+                              color: Colors.grey,
+                              size: screenAwareSize(14.0, context),
+                            ),
+                            SizedBox(width: 7.0),
+                            Text('수정하기',
+                                style: TextStyle(
+                                    color: Colors.grey, fontSize: 14.0)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: FlatButton(
+                        onPressed: () async {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: new Text("삭제하기"),
+                                  content: new Text("정말로 삭제하시겠습니까?"),
+                                  actions: <Widget>[
+                                    new FlatButton(
+                                      child: new Text("No"),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                    new FlatButton(
+                                      child: new Text("Yes"),
+                                      onPressed: () async {
+                                        final postBloc =
+                                            BlocProvider.of<PostBloc>(context);
+                                        log.i(post.id);
+                                        postBloc
+                                            .add(PostDelete(postId: post.id));
+                                        Navigator.of(context).pop();
+                                        Navigator.of(context).pop();
+                                      },
+                                    )
+                                  ],
+                                );
+                              });
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(
+                              Icons.remove,
+                              color: Colors.grey,
+                              size: screenAwareSize(14.5, context),
+                            ),
+                            SizedBox(width: 7.0),
+                            Text('삭제하기',
+                                style: TextStyle(
+                                    fontSize: 14.0, color: Colors.grey)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: ButtonTheme(
+                        alignedDropdown: true,
+                        buttonColor: Colors.amber,
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            items: _status.map((String dropDownStringItem) {
+                              return DropdownMenuItem<String>(
+                                value: dropDownStringItem,
+                                child: Text(dropDownStringItem),
+                              );
+                            }).toList(),
+                            // onChanged: (String newValueSelected) {
+                            //   setState(() {
+                            //     int val;
+                            //     if (newValueSelected == '판매중')
+                            //       val = 0;
+                            //     else if (newValueSelected == '예약중')
+                            //       val = 1;
+                            //     else if (newValueSelected == '판매완료') val = 2;
+                            //     log.i(val);
+                            //     post.status = val;
+                            //     _currentStatus = newValueSelected;
+                            //   });
+                            onChanged: (String newValueSelected) async {
                               int val;
+                              var temp = false;
                               if (newValueSelected == '판매중')
                                 val = 0;
                               else if (newValueSelected == '예약중')
                                 val = 1;
-                              else if (newValueSelected == '판매완료') val = 2;
-                              post.status = val;
-                              _currentStatus = newValueSelected;
-                            });
-
-                            final postBloc = BlocProvider.of<PostBloc>(context);
-                            postBloc.add(StatusUpdate(
-                                postId: post.id, status: post.status));
-                          },
-                          value: _currentStatus,
-                          isExpanded: true,
-                          style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                          elevation: 1,
+                              else if (newValueSelected == '판매완료') {
+                                temp = await showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: new Text("판매완료"),
+                                        content: new Text(
+                                            "판매완료 처리하시겠습니까? \n(판매가 완료되면 게시글을 수정할 수 없습니다.)"),
+                                        actions: <Widget>[
+                                          new FlatButton(
+                                            child: new Text("No"),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                          new FlatButton(
+                                            child: new Text("Yes"),
+                                            onPressed: () async {
+                                              Navigator.of(context).pop(true);
+                                            },
+                                          )
+                                        ],
+                                      );
+                                    });
+                                if (temp == null) {
+                                  val = post.status;
+                                } else
+                                  val = 2;
+                              }
+                              setState(() {
+                                post.status = val;
+                                _currentStatus = newValueSelected;
+                              });
+                              final postBloc =
+                                  BlocProvider.of<PostBloc>(context);
+                              postBloc.add(StatusUpdate(
+                                  postId: post.id, status: post.status));
+                            },
+                            value: _currentStatus,
+                            isExpanded: true,
+                            style:
+                                TextStyle(fontSize: 14.0, color: Colors.grey),
+                            elevation: 1,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ])));
+                  ])));
+    }
   }
 
   Widget _buildBottomTab() {
@@ -512,7 +786,7 @@ class _PostViewPageState extends State<PostViewPage> {
             animationDuration: Duration(microseconds: 2000),
           ),
         ),
-        if (post.isSold)
+        if (post.status == 2)
           Container(
               height: screenAwareSize(350.0, context),
               decoration:
@@ -656,7 +930,6 @@ class _PostViewPageState extends State<PostViewPage> {
             ),
             SizedBox(width: screenAwareSize(5.0, context)),
             if (post.status == 1)
-              // if (post.isSold)
               ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 child: Container(
@@ -851,7 +1124,7 @@ class _PostViewPageState extends State<PostViewPage> {
                                                     32.0, context))),
                                       ),
                                       child: Text(
-                                        "제출하기",
+                                        "제��하기",
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
