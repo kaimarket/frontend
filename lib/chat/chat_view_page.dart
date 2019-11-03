@@ -20,7 +20,6 @@ class ChatViewPage extends StatefulWidget {
 class _ChatViewPageState extends State<ChatViewPage> {
   TextEditingController messageController = TextEditingController();
   ScrollController scrollController = ScrollController();
-  SocketBloc _socketBloc;
 
   //로그인한 유저 정보
   UserBloc _userBloc;
@@ -98,18 +97,7 @@ class _ChatViewPageState extends State<ChatViewPage> {
     final UserLoaded user = _userBloc.state;
     loggedUserId = user.id;
 
-    _socketBloc = BlocProvider.of<SocketBloc>(context);
-    _socketBloc.add(SocketChatEnter(onMessage: (data) async {
-      updateMessage(data);
-    }));
-
     initShow();
-  }
-
-  @override
-  void dispose() {
-    _socketBloc.add(SocketChatLeave());
-    super.dispose();
   }
 
   void updateMessage(data) {
@@ -290,8 +278,7 @@ class _ChatViewPageState extends State<ChatViewPage> {
     return Container(
       // height: screenAwareSize(50.0, context),
       child: TextField(
-        onSubmitted: (value) =>
-            callback((_socketBloc.state as SocketChatLoaded).socket),
+        onSubmitted: (value) {},
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.all(screenAwareSize(10.0, context)),
@@ -349,23 +336,18 @@ class _ChatViewPageState extends State<ChatViewPage> {
                   ],
                 ),
               ),
-              BlocBuilder(
-                  bloc: _socketBloc,
-                  builder: (context, state) {
-                    return Container(
-                      color: Colors.white,
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(child: _typingbar(context)),
-                          SendButton(
-                            text: "Send",
-                            callback: () =>
-                                callback((state as SocketChatLoaded).socket),
-                          ),
-                        ],
-                      ),
-                    );
-                  })
+              Container(
+                color: Colors.white,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(child: _typingbar(context)),
+                    SendButton(
+                      text: "Send",
+                      callback: () {},
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ));
