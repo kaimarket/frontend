@@ -52,7 +52,7 @@ class ChatListsState extends State<ChatLists> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
-          " 채팅방 목록",
+          "채팅방 목록",
           style: TextStyle(fontSize: screenAwareSize(16.0, context)),
         ),
       ),
