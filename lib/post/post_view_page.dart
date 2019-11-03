@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -419,7 +420,7 @@ class _PostViewPageState extends State<PostViewPage> {
                                 color: Colors.amber[200]),
                       )),
                   SizedBox(width: 5.0),
-                  Text('Ï', style: TextStyle(color: ThemeColor.primary)),
+                  Text('찜', style: TextStyle(color: ThemeColor.primary)),
                 ],
               ),
               RaisedButton(
@@ -458,15 +459,26 @@ class _PostViewPageState extends State<PostViewPage> {
 
   void _onPressChatSeller() {
     _loadingWrapperKey.currentState.loadFuture(() async {
-      var res = await dio.postUri(getUri('/api/chats'), data: {
-        'postId': post.id,
-        'sellerId': post.user.id,
-      });
+      //채팅방을 생성한다.
+      await Firestore.instance
+          .collection("UserRooms")
+          .document(post.user.id.toString())
+          .setData({});
 
-      if (res.statusCode == 200) {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => ChatViewPage(chatId: res.data)));
-      }
+      await Firestore.instance
+          .collection("UserRooms")
+          .document(loggedUserId.toString())
+          .setData({});
+
+      // var res = await dio.postUri(getUri('/api/chats'), data: {
+      //   'postId': post.id,
+      //   'sellerId': post.user.id,
+      // });
+
+      // if (res.statusCode == 200) {
+      //   Navigator.of(context).push(MaterialPageRoute(
+      //       builder: (context) => ChatViewPage(chatId: res.data)));
+      // }
     });
   }
 

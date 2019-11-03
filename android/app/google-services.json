@@ -1,43 +1,58 @@
 {
   "project_info": {
-    "project_number": "852111566125",
-    "firebase_url": "https://kaimarket-1bf8c.firebaseio.com",
-    "project_id": "kaimarket-1bf8c",
-    "storage_bucket": "kaimarket-1bf8c.appspot.com"
+    "project_number": "748181039781",
+    "firebase_url": "https://kaimarket-b9774.firebaseio.com",
+    "project_id": "kaimarket-b9774",
+    "storage_bucket": "kaimarket-b9774.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:852111566125:android:f836ec96581cf36f",
+        "mobilesdk_app_id": "1:748181039781:android:d2212e3f2fb068a302fb4c",
         "android_client_info": {
-          "package_name": "com.madcamp.week_3"
+          "package_name": "com.kai.kaimarket"
         }
       },
       "oauth_client": [
         {
-          "client_id": "852111566125-a9hp069cjbn34vgqcv31abraqhf42vlv.apps.googleusercontent.com",
+          "client_id": "748181039781-io8mh9dohau5ljjp3vrfkarrqkd08ijh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.madcamp.week_3",
+            "package_name": "com.kai.kaimarket",
+            "certificate_hash": "0b5b8963898cdb4dc1f52fd764a1b1da2435788a"
+          }
+        },
+        {
+          "client_id": "748181039781-tn60fobemjg04ld77gf4gai18p3290m0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kai.kaimarket",
             "certificate_hash": "41230d791886c580c26257371013c89df87a2aa9"
           }
         },
         {
-          "client_id": "852111566125-q4je9n24nb5lpmshjh2b4u8tdmuir9iv.apps.googleusercontent.com",
+          "client_id": "748181039781-1e449komtpehip1lsnkflf74ln2r2g2a.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAPrAL981aZL-k2wKhefeoi8zHE6TZxhic"
+          "current_key": "AIzaSyBFuME2o5q6lt4d4wNGQSvv_PCvswbEPv0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "852111566125-q4je9n24nb5lpmshjh2b4u8tdmuir9iv.apps.googleusercontent.com",
+              "client_id": "748181039781-1e449komtpehip1lsnkflf74ln2r2g2a.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "748181039781-kc1vms1v4moqqmqs28088erjvfu2v4md.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kai.kaimarket"
+              }
             }
           ]
         }
