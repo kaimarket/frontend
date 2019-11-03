@@ -1,6 +1,6 @@
-import 'package:week_3/models/user.dart';
-import 'package:week_3/models/post.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/models/user.dart';
+import 'package:kaimarket/models/post.dart';
+import 'package:kaimarket/utils/utils.dart';
 
 class Chat {
   int id;

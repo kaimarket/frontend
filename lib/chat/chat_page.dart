@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:week_3/chat/chat_card.dart';
-import 'package:week_3/utils/utils.dart';
-import 'package:week_3/models/chat.dart';
-import 'package:week_3/bloc/bloc.dart';
+import 'package:kaimarket/chat/chat_card.dart';
+import 'package:kaimarket/utils/utils.dart';
+import 'package:kaimarket/models/chat.dart';
+import 'package:kaimarket/bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:week_3/chat/chat_view_page.dart';
+import 'package:kaimarket/chat/chat_view_page.dart';
 
 class ChatPage extends StatelessWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/utils/utils.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
-import 'package:week_3/post/asset_full.dart';
+import 'package:kaimarket/post/asset_full.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class PhotoButton extends StatelessWidget {

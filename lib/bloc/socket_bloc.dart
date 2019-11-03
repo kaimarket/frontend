@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import './bloc.dart';
 import 'package:adhara_socket_io/adhara_socket_io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/utils/utils.dart';
 
 class SocketBloc extends Bloc<SocketEvent, SocketState> {
   SocketIOManager manager = SocketIOManager();
