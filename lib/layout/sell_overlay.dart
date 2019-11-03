@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/styles/theme.dart';
-import 'package:week_3/utils/utils.dart';
-import 'package:week_3/layout/sell_button.dart';
+import 'package:kaimarket/styles/theme.dart';
+import 'package:kaimarket/utils/utils.dart';
+import 'package:kaimarket/layout/sell_button.dart';
 import 'dart:math' as math;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:week_3/post/post_page.dart';
-import 'package:week_3/post/post_book_select_page.dart';
-import 'package:week_3/post/post_book_page.dart';
+import 'package:kaimarket/post/post_page.dart';
+import 'package:kaimarket/post/post_book_select_page.dart';
+import 'package:kaimarket/post/post_book_page.dart';
 
 class SellOverlay extends StatelessWidget {
   final Animation listenable;

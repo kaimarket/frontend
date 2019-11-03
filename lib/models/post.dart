@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/models/category.dart';
-import 'package:week_3/models/book.dart';
-import 'package:week_3/models/user.dart';
+import 'package:kaimarket/models/category.dart';
+import 'package:kaimarket/models/book.dart';
+import 'package:kaimarket/models/user.dart';
 import 'package:equatable/equatable.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/utils/utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'post.g.dart';

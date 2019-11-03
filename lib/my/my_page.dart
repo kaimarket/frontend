@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/post/post_card.dart';
-import 'package:week_3/utils/utils.dart';
-import 'package:week_3/styles/theme.dart';
+import 'package:kaimarket/post/post_card.dart';
+import 'package:kaimarket/utils/utils.dart';
+import 'package:kaimarket/styles/theme.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
-import 'package:week_3/login/login_page.dart';
+import 'package:kaimarket/login/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:week_3/bloc/bloc.dart';
+import 'package:kaimarket/bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:week_3/models/post.dart';
-import 'package:week_3/post/post_view_page.dart';
-import 'package:week_3/my/edit_profile.dart';
+import 'package:kaimarket/models/post.dart';
+import 'package:kaimarket/post/post_view_page.dart';
+import 'package:kaimarket/my/edit_profile.dart';
 
 class MyPage extends StatefulWidget {
   @override

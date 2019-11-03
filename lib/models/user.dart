@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/models/post.dart';
-import 'package:week_3/models/chat.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/models/post.dart';
+import 'package:kaimarket/models/chat.dart';
+import 'package:kaimarket/utils/utils.dart';
 import 'package:equatable/equatable.dart';
 import 'package:collection/collection.dart';
 

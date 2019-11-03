@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:week_3/models/post.dart';
-import 'package:week_3/models/chat.dart';
+import 'package:kaimarket/models/post.dart';
+import 'package:kaimarket/models/chat.dart';
 
 @immutable
 abstract class UserState extends Equatable {

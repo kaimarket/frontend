@@ -1,20 +1,20 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:week_3/home/home_page.dart';
-import 'package:week_3/layout/sell_overlay.dart';
-import 'package:week_3/utils/utils.dart';
-import 'package:week_3/chat/chat_page.dart';
+import 'package:kaimarket/home/home_page.dart';
+import 'package:kaimarket/layout/sell_overlay.dart';
+import 'package:kaimarket/utils/utils.dart';
+import 'package:kaimarket/chat/chat_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:week_3/my/my_page.dart';
-import 'package:week_3/layout/tab_button.dart';
-import 'package:week_3/layout/sell_button.dart';
+import 'package:kaimarket/my/my_page.dart';
+import 'package:kaimarket/layout/tab_button.dart';
+import 'package:kaimarket/layout/sell_button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:week_3/wish/wish_page.dart';
+import 'package:kaimarket/wish/wish_page.dart';
 import 'package:provider/provider.dart';
-import 'package:week_3/models/post.dart';
+import 'package:kaimarket/models/post.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:week_3/bloc/bloc.dart';
+import 'package:kaimarket/bloc/bloc.dart';
 
 class DefaultLayout extends StatefulWidget {
   @override
