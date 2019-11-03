@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,23 +7,23 @@ import 'package:flutter/material.dart' as prefix0;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:week_3/bloc/post_event.dart';
-import 'package:week_3/models/chat.dart';
-import 'package:week_3/post/google_map_fixed.dart';
-import 'package:week_3/post/post_book_page.dart';
-import 'package:week_3/post/post_card.dart';
-import 'package:week_3/styles/theme.dart';
-import 'package:week_3/utils/utils.dart';
-import 'package:week_3/models/book.dart';
+import 'package:kaimarket/bloc/post_event.dart';
+import 'package:kaimarket/models/chat.dart';
+import 'package:kaimarket/post/google_map_fixed.dart';
+import 'package:kaimarket/post/post_book_page.dart';
+import 'package:kaimarket/post/post_card.dart';
+import 'package:kaimarket/styles/theme.dart';
+import 'package:kaimarket/utils/utils.dart';
+import 'package:kaimarket/models/book.dart';
 import 'dart:math' as math;
-import 'package:week_3/models/post.dart';
-import 'package:week_3/utils/dio.dart';
-import 'package:week_3/bloc/bloc.dart';
+import 'package:kaimarket/models/post.dart';
+import 'package:kaimarket/utils/dio.dart';
+import 'package:kaimarket/bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:week_3/post/post_shimmer_card.dart';
-import 'package:week_3/chat/chat_view_page.dart';
-import 'package:week_3/post/post_page.dart';
+import 'package:kaimarket/post/post_shimmer_card.dart';
+import 'package:kaimarket/chat/chat_view_page.dart';
+import 'package:kaimarket/post/post_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class PostViewPage extends StatefulWidget {
@@ -619,7 +620,7 @@ class _PostViewPageState extends State<PostViewPage> {
                                 color: Colors.amber[200]),
                       )),
                   SizedBox(width: 5.0),
-                  Text('Ï', style: TextStyle(color: ThemeColor.primary)),
+                  Text('찜', style: TextStyle(color: ThemeColor.primary)),
                 ],
               ),
               RaisedButton(
@@ -658,15 +659,26 @@ class _PostViewPageState extends State<PostViewPage> {
 
   void _onPressChatSeller() {
     _loadingWrapperKey.currentState.loadFuture(() async {
-      var res = await dio.postUri(getUri('/api/chats'), data: {
-        'postId': post.id,
-        'sellerId': post.user.id,
-      });
+      //채팅방을 생성한다.
+      await Firestore.instance
+          .collection("UserRooms")
+          .document(post.user.id.toString())
+          .setData({});
 
-      if (res.statusCode == 200) {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => ChatViewPage(chatId: res.data)));
-      }
+      await Firestore.instance
+          .collection("UserRooms")
+          .document(loggedUserId.toString())
+          .setData({});
+
+      // var res = await dio.postUri(getUri('/api/chats'), data: {
+      //   'postId': post.id,
+      //   'sellerId': post.user.id,
+      // });
+
+      // if (res.statusCode == 200) {
+      //   Navigator.of(context).push(MaterialPageRoute(
+      //       builder: (context) => ChatViewPage(chatId: res.data)));
+      // }
     });
   }
 

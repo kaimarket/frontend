@@ -1,9 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:week_3/chat/chat_view_page.dart';
-import 'package:week_3/styles/theme.dart';
-import 'package:week_3/utils/utils.dart';
-import 'package:week_3/models/chat.dart';
-import 'package:week_3/utils/base_height.dart';
+import 'package:kaimarket/chat/chat_view_page.dart';
+import 'package:kaimarket/styles/theme.dart';
+import 'package:kaimarket/utils/utils.dart';
+import 'package:kaimarket/models/chat.dart';
+import 'package:kaimarket/utils/base_height.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -50,7 +51,7 @@ class ChatCard extends StatelessWidget {
     );
   }
 
-  Widget _chatLeft(context) {
+  Widget _chatLeft(BuildContext context) {
     return new Container(
       width: screenAwareSize(50.0, context),
       height: screenAwareSize(50.0, context),
@@ -62,9 +63,10 @@ class ChatCard extends StatelessWidget {
             //image: new NetworkImage(
             //  "url"
             image: ExactAssetImage(getRandomAvatarUrlByPostId(
-                loggedUserId == chat.buyer.id
-                    ? chat.seller.id
-                    : chat.buyer.id)),
+                // loggedUserId == document['buyerId']
+                //     ? document['sellerId']
+                //     : document['buyerId'])),
+                chat.buyer.id))
           )),
     );
   }

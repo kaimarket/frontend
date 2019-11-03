@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/utils/utils.dart';
-import 'package:week_3/models/post.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/utils/utils.dart';
+import 'package:kaimarket/models/post.dart';
+import 'package:kaimarket/utils/utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:week_3/styles/theme.dart';
+import 'package:kaimarket/styles/theme.dart';
 
 class PostCard extends StatelessWidget {
   final VoidCallback onTap;

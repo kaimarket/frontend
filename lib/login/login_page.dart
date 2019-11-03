@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/login/login_button.dart';
+import 'package:kaimarket/login/login_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 // import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/utils/utils.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:week_3/layout/default.dart';
-import 'package:week_3/login/valid/valid_page.dart';
+import 'package:kaimarket/layout/default.dart';
+import 'package:kaimarket/login/valid/valid_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'kakao_button.dart';
 

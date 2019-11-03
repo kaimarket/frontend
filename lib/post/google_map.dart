@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:week_3/styles/theme.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/styles/theme.dart';
+import 'package:kaimarket/utils/utils.dart';
 
 class GoogleMapPage extends StatefulWidget {
   final Function(double, double) onTap;

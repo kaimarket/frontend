@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/utils/utils.dart';
 import 'package:intl/intl.dart';
-import 'package:week_3/models/book.dart';
+import 'package:kaimarket/models/book.dart';
 
 class PostBookCard extends StatelessWidget {
   final Book book;

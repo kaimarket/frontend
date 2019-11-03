@@ -1,4 +1,4 @@
-package com.madcamp.week_3;
+package com.kai.kaimarket;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

@@ -1,8 +1,8 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Users/macbook/Documents/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/macbook/Documents/git/frontend"
-export "FLUTTER_TARGET=/Users/macbook/Documents/git/frontend/lib/main.dart"
+export "FLUTTER_ROOT=/Users/jiyun/Documents/flutter"
+export "FLUTTER_APPLICATION_PATH=/Users/jiyun/Documents/frontend"
+export "FLUTTER_TARGET=/Users/jiyun/Documents/frontend/lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"
 export "FLUTTER_FRAMEWORK_DIR=/Users/macbook/Documents/flutter/bin/cache/artifacts/engine/ios"
