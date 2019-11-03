@@ -5,6 +5,7 @@ import 'package:kaimarket/utils/utils.dart';
 import 'package:kaimarket/models/chat.dart';
 import 'package:kaimarket/bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kaimarket/chat/chat_view_page.dart';
 
 class ChatPage extends StatelessWidget {
@@ -56,30 +57,36 @@ class ChatListsState extends State<ChatLists> {
           style: TextStyle(fontSize: screenAwareSize(16.0, context)),
         ),
       ),
-      body: ListView.separated(
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.only(bottom: screenAwareSize(60.0, context)),
-        itemBuilder: (context, i) {
-          return ChatCard(
-            chat: chats[i],
-            loggedUserId: loggedUserId,
-            onPressed: () {
-              setState(() {
-                chats[i].buyerNonReadCount = 0;
-                chats[i].sellerNonReadCount = 0;
-              });
+      body: StreamBuilder(
+        stream: Firestore.instance.collection('UserRooms').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return const Text('Loading..');
+          return ListView.separated(
+            physics: BouncingScrollPhysics(),
+            padding: EdgeInsets.only(bottom: screenAwareSize(60.0, context)),
+            itemBuilder: (context, i) {
+              return ChatCard(
+                chat: chats[i],
+                loggedUserId: loggedUserId,
+                onPressed: () {
+                  setState(() {
+                    chats[i].buyerNonReadCount = 0;
+                    chats[i].sellerNonReadCount = 0;
+                  });
 
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => ChatViewPage(chatId: chats[i].id)));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ChatViewPage(chatId: chats[i].id)));
+                },
+              );
             },
-          );
-        },
-        itemCount: chats.length,
-        separatorBuilder: (context, idx) {
-          return Container(
-            height: 1.0,
-            width: double.infinity,
-            color: Colors.grey[200],
+            itemCount: chats.length,
+            separatorBuilder: (context, idx) {
+              return Container(
+                height: 1.0,
+                width: double.infinity,
+                color: Colors.grey[200],
+              );
+            },
           );
         },
       ),
