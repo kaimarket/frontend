@@ -343,32 +343,6 @@ class _PostViewPageState extends State<PostViewPage> {
                   children: <Widget>[
                     Expanded(
                       child: FlatButton(
-                        onPressed: post.isBook
-                            ? () {
-                                Book book = new Book(
-                                  title: post.title,
-                                  image: post.bookImage,
-                                  author: post.bookAuthor,
-                                  price: post.bookPrice,
-                                  pubdate: post.bookPubDate,
-                                  publisher: post.bookPublisher,
-                                );
-                                return Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => PostBookPage(
-                                      book: book,
-                                      post: post,
-                                    ),
-                                  ),
-                                );
-                              }
-                            : () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => PostPage(post: post),
-                                  ),
-                                );
-                              },
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
@@ -378,57 +352,9 @@ class _PostViewPageState extends State<PostViewPage> {
                               size: screenAwareSize(20.0, context),
                             ),
                             SizedBox(width: 7.0),
-                            Text('판매완료',
+                            Text('판매가 완료된 상품입니다',
                                 style: TextStyle(
                                     color: Colors.grey, fontSize: 14.0)),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: FlatButton(
-                        onPressed: () async {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: new Text("삭제하기"),
-                                  content: new Text("정말로 삭제하시겠습니까?"),
-                                  actions: <Widget>[
-                                    new FlatButton(
-                                      child: new Text("No"),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
-                                    new FlatButton(
-                                      child: new Text("Yes"),
-                                      onPressed: () async {
-                                        final postBloc =
-                                            BlocProvider.of<PostBloc>(context);
-                                        log.i(post.id);
-                                        postBloc
-                                            .add(PostDelete(postId: post.id));
-                                        Navigator.of(context).pop();
-                                        Navigator.of(context).pop();
-                                      },
-                                    )
-                                  ],
-                                );
-                              });
-                        },
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Icon(
-                              Icons.remove,
-                              color: Colors.grey,
-                              size: screenAwareSize(14.5, context),
-                            ),
-                            SizedBox(width: 7.0),
-                            Text('삭제하기',
-                                style: TextStyle(
-                                    fontSize: 14.0, color: Colors.grey)),
                           ],
                         ),
                       ),
