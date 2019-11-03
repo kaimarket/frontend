@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/bloc/bloc.dart';
-import 'package:week_3/utils/utils.dart';
-import 'package:week_3/utils/dio.dart';
-import 'package:week_3/bloc/user_bloc.dart';
-import 'package:week_3/bloc/user_event.dart';
+import 'package:kaimarket/bloc/bloc.dart';
+import 'package:kaimarket/utils/utils.dart';
+import 'package:kaimarket/utils/dio.dart';
+import 'package:kaimarket/bloc/user_bloc.dart';
+import 'package:kaimarket/bloc/user_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EditProfile extends StatefulWidget {

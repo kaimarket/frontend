@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:week_3/bloc/post_event.dart';
+import 'package:kaimarket/bloc/post_event.dart';
 import './bloc.dart';
-import 'package:week_3/models/post.dart';
-import 'package:week_3/utils/dio.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/models/post.dart';
+import 'package:kaimarket/utils/dio.dart';
+import 'package:kaimarket/utils/utils.dart';
 import 'package:rxdart/rxdart.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {

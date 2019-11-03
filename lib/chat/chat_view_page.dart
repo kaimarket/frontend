@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:week_3/utils/base_height.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/utils/base_height.dart';
+import 'package:kaimarket/utils/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:week_3/bloc/bloc.dart';
-import 'package:week_3/post/post_view_page.dart';
-import 'package:week_3/models/chat.dart';
+import 'package:kaimarket/bloc/bloc.dart';
+import 'package:kaimarket/post/post_view_page.dart';
+import 'package:kaimarket/models/chat.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:intl/intl.dart';
 
@@ -20,7 +20,6 @@ class ChatViewPage extends StatefulWidget {
 class _ChatViewPageState extends State<ChatViewPage> {
   TextEditingController messageController = TextEditingController();
   ScrollController scrollController = ScrollController();
-  SocketBloc _socketBloc;
 
   //로그인한 유저 정보
   UserBloc _userBloc;
@@ -30,9 +29,6 @@ class _ChatViewPageState extends State<ChatViewPage> {
       EdgeInsets.only(left: 26, top: 12, bottom: 12, right: 26);
 
   final _partnerNameFont = TextStyle(fontSize: 20.0, color: Colors.grey[600]);
-  // final _chatFont = TextStyle(fontSize: 14.0, color: Colors.grey[500]);
-  // final _postFont = TextStyle(fontSize: 14.0, color: Colors.grey[600]);
-  // final _timeFont = TextStyle(fontSize: 10.0, color: Colors.grey[400]);
 
   List<Message> existMessages = [];
 
@@ -101,18 +97,7 @@ class _ChatViewPageState extends State<ChatViewPage> {
     final UserLoaded user = _userBloc.state;
     loggedUserId = user.id;
 
-    _socketBloc = BlocProvider.of<SocketBloc>(context);
-    _socketBloc.add(SocketChatEnter(onMessage: (data) async {
-      updateMessage(data);
-    }));
-
     initShow();
-  }
-
-  @override
-  void dispose() {
-    _socketBloc.add(SocketChatLeave());
-    super.dispose();
   }
 
   void updateMessage(data) {
@@ -293,8 +278,7 @@ class _ChatViewPageState extends State<ChatViewPage> {
     return Container(
       // height: screenAwareSize(50.0, context),
       child: TextField(
-        onSubmitted: (value) =>
-            callback((_socketBloc.state as SocketChatLoaded).socket),
+        onSubmitted: (value) {},
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.all(screenAwareSize(10.0, context)),
@@ -352,23 +336,18 @@ class _ChatViewPageState extends State<ChatViewPage> {
                   ],
                 ),
               ),
-              BlocBuilder(
-                  bloc: _socketBloc,
-                  builder: (context, state) {
-                    return Container(
-                      color: Colors.white,
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(child: _typingbar(context)),
-                          SendButton(
-                            text: "Send",
-                            callback: () =>
-                                callback((state as SocketChatLoaded).socket),
-                          ),
-                        ],
-                      ),
-                    );
-                  })
+              Container(
+                color: Colors.white,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(child: _typingbar(context)),
+                    SendButton(
+                      text: "Send",
+                      callback: () {},
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ));

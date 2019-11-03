@@ -2,11 +2,11 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import './bloc.dart';
-import 'package:week_3/models/post.dart';
-import 'package:week_3/utils/utils.dart';
-import 'package:week_3/models/user.dart';
-import 'package:week_3/bloc/user_event.dart';
-import 'package:week_3/utils/dio.dart';
+import 'package:kaimarket/models/post.dart';
+import 'package:kaimarket/utils/utils.dart';
+import 'package:kaimarket/models/user.dart';
+import 'package:kaimarket/bloc/user_event.dart';
+import 'package:kaimarket/utils/dio.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   @override

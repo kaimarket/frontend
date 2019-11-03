@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/utils/utils.dart';
 
 class LoginButton extends StatelessWidget {
   final Color color;
