@@ -1,16 +1,41 @@
-# kaimarket
+<h1 align="center">Kaimarket</h1>
+<div align="center">
+  👩🎁🎁🎁🎁🎁👨
+</div>
+<div align="center">
+  카이스트 학생들을 위한 중고물품 판매 어플
+</div>
 
-A new Flutter project.
+<br/>
+<div align="center" style="display:flex;">
+  <img src="https://img.shields.io/static/v1?label=KAIST&message=Market&color=orange" />
+  <img src="https://img.shields.io/github/languages/top/beygee/kaimarket" />
+  <img src="https://img.shields.io/github/commit-activity/m/beygee/kaimarket"/>
+  <img src="https://img.shields.io/github/last-commit/beygee/kaimarket"/>
+</div>
 
-## Getting Started
+## Tech Stack
 
-This project is a starting point for a Flutter application.
+### FrontEnd
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter
+- Socket.io
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### BackEnd
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+- Nodejs
+- Socket.io
+- JWT
+- Mysql
+- Sequelize
+- Firebase Messaging
+
+### DEMO
+
+<div style="display:flex" align="center">
+  <img src="https://github.com/LoakickBangu/madcamp_week_3/blob/master/images/1.gif" width="150">
+  <img src="https://github.com/LoakickBangu/madcamp_week_3/blob/master/images/2.gif" width="150">
+  <img src="https://github.com/LoakickBangu/madcamp_week_3/blob/master/images/3.gif" width="150">
+  <img src="https://github.com/LoakickBangu/madcamp_week_3/blob/master/images/4.gif" width="150">
+  <img src="https://github.com/LoakickBangu/madcamp_week_3/blob/master/images/5.gif" width="150">
+</div>
