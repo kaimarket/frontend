@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/login/login_page.dart';
-import 'package:week_3/models/post.dart';
-import 'package:week_3/styles/theme.dart';
-import 'package:week_3/splash.dart';
+import 'package:kaimarket/login/login_page.dart';
+import 'package:kaimarket/models/post.dart';
+import 'package:kaimarket/styles/theme.dart';
+import 'package:kaimarket/splash.dart';
 import 'layout/default.dart';
-import 'package:week_3/login/valid/valid_page.dart';
+import 'package:kaimarket/login/valid/valid_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:week_3/bloc/bloc.dart';
-import 'package:week_3/post/post_view_page.dart';
+import 'package:kaimarket/bloc/bloc.dart';
+import 'package:kaimarket/post/post_view_page.dart';
 import 'utils/utils.dart';
 
 void main() {
@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<SocketBloc>(builder: (context) => SocketBloc()),
         BlocProvider<PostBloc>(builder: (context) => PostBloc()),
         BlocProvider<UserBloc>(builder: (context) => UserBloc()),
       ],

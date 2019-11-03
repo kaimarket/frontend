@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/styles/theme.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/styles/theme.dart';
+import 'package:kaimarket/utils/utils.dart';
 
 class HomeCategoryButton extends StatelessWidget {
   final IconData icon;

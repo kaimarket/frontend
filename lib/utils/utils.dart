@@ -2,7 +2,7 @@ export './loading_wrapper.dart';
 export './base_height.dart';
 export './dio.dart';
 export './custom_ink_splash_factory.dart';
-export 'package:week_3/styles/theme.dart';
+export 'package:kaimarket/styles/theme.dart';
 
 import 'dart:async';
 

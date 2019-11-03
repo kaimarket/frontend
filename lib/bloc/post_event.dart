@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/rendering.dart';
 import 'package:meta/meta.dart';
-import 'package:week_3/models/post.dart';
+import 'package:kaimarket/models/post.dart';
 
 @immutable
 abstract class PostEvent extends Equatable {

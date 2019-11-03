@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:week_3/post/google_map.dart';
-import 'package:week_3/models/post.dart';
-import 'package:week_3/utils/utils.dart';
+import 'package:kaimarket/post/google_map.dart';
+import 'package:kaimarket/models/post.dart';
+import 'package:kaimarket/utils/utils.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:week_3/bloc/bloc.dart';
+import 'package:kaimarket/bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
