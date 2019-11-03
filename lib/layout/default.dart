@@ -37,16 +37,12 @@ class _DefaultLayoutState extends State<DefaultLayout>
   //두번 백 버튼 누를시 꺼지게
   DateTime currentBackPressTime = DateTime.now();
 
-  SocketBloc _socketBloc;
   UserBloc _userBloc;
 
   @override
   void initState() {
     super.initState();
 
-    //소켓 초기화
-    _socketBloc = BlocProvider.of<SocketBloc>(context);
-    _socketBloc.add(SocketInit());
     _userBloc = BlocProvider.of<UserBloc>(context);
     _userBloc.add(UserInit());
 
@@ -64,9 +60,6 @@ class _DefaultLayoutState extends State<DefaultLayout>
 
   @override
   void dispose() {
-    //소켓 제거
-    _socketBloc.add(SocketDelete());
-
     //유저 정보 제거
     _userBloc.add(UserDelete());
 
