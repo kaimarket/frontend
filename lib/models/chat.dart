@@ -1,7 +1,11 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'package:week_3/models/user.dart';
 import 'package:week_3/models/post.dart';
 import 'package:week_3/utils/utils.dart';
 
+part 'chat.g.dart';
+
+@JsonSerializable()
 class Chat {
   int id;
   User seller;
@@ -14,31 +18,21 @@ class Chat {
   int buyerNonReadCount;
   int sellerNonReadCount;
 
-  Chat.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        seller = User.fromJson(json['seller']),
-        buyer = User.fromJson(json['buyer']),
-        buyerNonReadCount = json['buyerNonReadCount'],
-        sellerNonReadCount = json['sellerNonReadCount'] {
-    if (json['recentMessage'] != null) {
-      recentMessage = Message.fromJson(json['recentMessage']);
-    }
+  Chat({
+    this.id,
+    this.seller,
+    this.buyer,
+    this.post,
+    this.messages,
+    this.recentMessage,
+    this.buyerNonReadCount,
+    this.sellerNonReadCount,
+  });
 
-    if (json['post'] != null) {
-      post = Post.fromJson(json['post']);
-    }
-
-    messages = json['messages'].length > 0
-        ? json['messages']
-            .map((message) {
-              return Message.fromJson(message);
-            })
-            .toList()
-            .cast<Message>()
-        : <Message>[];
-  }
+  factory Chat.fromJson(Map<String, dynamic> json) => _$ChatFromJson(json);
 }
 
+@JsonSerializable()
 class Message {
   int userId;
   String text;
@@ -48,9 +42,6 @@ class Message {
 
   Message({this.userId, this.text, this.createdAt, this.showTime, this.me});
 
-  Message.fromJson(Map<String, dynamic> json)
-      : userId = json['userId'],
-        text = json['text'],
-        createdAt = json['createdAt'],
-        showTime = json['showTime'];
+  factory Message.fromJson(Map<String, dynamic> json) =>
+      _$MessageFromJson(json);
 }
