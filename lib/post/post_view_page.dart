@@ -156,7 +156,7 @@ class _PostViewPageState extends State<PostViewPage> {
                 opacity: opacityTween,
                 child: Text(
                   post.title,
-                  style: TextStyle(fontSize: 16.0),
+                  style: TextStyle(fontSize: screenAwareSize(16.0, context)),
                 )),
             backgroundColor: Colors.white.withOpacity(opacityTween),
             bottomOpacity: 0.0,
@@ -179,6 +179,7 @@ class _PostViewPageState extends State<PostViewPage> {
           child: Text(
             "같은 카테고리 상품",
             style: TextStyle(
+              fontSize: screenAwareSize(11.0, context),
               color: Colors.grey[500],
             ),
           ),
@@ -262,10 +263,10 @@ class _PostViewPageState extends State<PostViewPage> {
                             color: Colors.grey,
                             size: screenAwareSize(14.0, context),
                           ),
-                          SizedBox(width: 7.0),
+                          SizedBox(width: screenAwareSize(7.0, context)),
                           Text('수정하기',
                               style: TextStyle(
-                                  color: Colors.grey, fontSize: 14.0)),
+                                  color: Colors.grey, fontSize: screenAwareSize(14.0, context))),
                         ],
                       ),
                     ),
@@ -309,10 +310,10 @@ class _PostViewPageState extends State<PostViewPage> {
                             color: Colors.grey,
                             size: screenAwareSize(14.5, context),
                           ),
-                          SizedBox(width: 7.0),
+                          SizedBox(width: screenAwareSize(7.0, context)),
                           Text('삭제하기',
                               style: TextStyle(
-                                  fontSize: 14.0, color: Colors.grey)),
+                                  fontSize: screenAwareSize(14.0, context), color: Colors.grey)),
                         ],
                       ),
                     ),
@@ -347,7 +348,7 @@ class _PostViewPageState extends State<PostViewPage> {
                           },
                           value: _currentStatus,
                           isExpanded: true,
-                          style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                          style: TextStyle(fontSize: screenAwareSize(14.0, context), color: Colors.grey),
                           elevation: 1,
                         ),
                       ),
@@ -569,7 +570,7 @@ class _PostViewPageState extends State<PostViewPage> {
                   post.title,
                   style: TextStyle(
                     fontSize: screenAwareSize(
-                      14.0,
+                      screenAwareSize(14.0, context),
                       context,
                     ),
                     color: Colors.grey[800],
@@ -591,7 +592,7 @@ class _PostViewPageState extends State<PostViewPage> {
                   children: <Widget>[
                     Icon(
                       FontAwesomeIcons.clock,
-                      size: 12.0,
+                      size: screenAwareSize(12.0, context),
                       color: Colors.grey[400],
                     ),
                     SizedBox(width: 2.0),
@@ -599,13 +600,13 @@ class _PostViewPageState extends State<PostViewPage> {
                       post.updatedAt,
                       style: TextStyle(
                         color: Colors.grey[400],
-                        fontSize: 12.0,
+                        fontSize: screenAwareSize(12.0, context),
                       ),
                     ),
                     SizedBox(width: 10.0),
                     Icon(
                       FontAwesomeIcons.eye,
-                      size: 12.0,
+                      size: screenAwareSize(12.0, context),
                       color: Colors.grey[400],
                     ),
                     SizedBox(width: 3.0),
@@ -613,13 +614,13 @@ class _PostViewPageState extends State<PostViewPage> {
                       post.view.toString(),
                       style: TextStyle(
                         color: Colors.grey[400],
-                        fontSize: 12.0,
+                        fontSize: screenAwareSize(12.0, context),
                       ),
                     ),
                     SizedBox(width: 20.0),
                     Icon(
                       FontAwesomeIcons.heart,
-                      size: 12.0,
+                      size: screenAwareSize(12.0, context),
                       color: Colors.grey[400],
                     ),
                     SizedBox(width: 3.0),
@@ -627,7 +628,7 @@ class _PostViewPageState extends State<PostViewPage> {
                       post.wish.toString(),
                       style: TextStyle(
                         color: Colors.grey[400],
-                        fontSize: 12.0,
+                        fontSize: screenAwareSize(12.0, context),
                       ),
                     ),
                   ],
@@ -721,43 +722,43 @@ class _PostViewPageState extends State<PostViewPage> {
             children: <Widget>[
               Icon(
                 FontAwesomeIcons.clock,
-                size: 12.0,
+                size: screenAwareSize(12.0, context),
                 color: Colors.grey[400],
               ),
-              SizedBox(width: 3.0),
+              SizedBox(width: screenAwareSize(3.0, context)),
               Text(
                 post.updatedAt,
                 style: TextStyle(
                   color: Colors.grey[400],
-                  fontSize: 12.0,
+                  fontSize: screenAwareSize(12.0, context),
                 ),
               ),
-              SizedBox(width: 20.0),
+              SizedBox(width: screenAwareSize(20.0, context)),
               Icon(
                 FontAwesomeIcons.eye,
-                size: 12.0,
+                size: screenAwareSize(12.0, context),
                 color: Colors.grey[400],
               ),
-              SizedBox(width: 3.0),
+              SizedBox(width: screenAwareSize(3.0, context)),
               Text(
                 post.view.toString(),
                 style: TextStyle(
                   color: Colors.grey[400],
-                  fontSize: 12.0,
+                  fontSize: screenAwareSize(12.0, context),
                 ),
               ),
-              SizedBox(width: 20.0),
+              SizedBox(width: screenAwareSize(20.0, context)),
               Icon(
                 FontAwesomeIcons.heart,
-                size: 12.0,
+                size: screenAwareSize(12.0, context),
                 color: Colors.grey[400],
               ),
-              SizedBox(width: 3.0),
+              SizedBox(width: screenAwareSize(3.0, context)),
               Text(
                 post.wish.toString(),
                 style: TextStyle(
                   color: Colors.grey[400],
-                  fontSize: 12.0,
+                  fontSize: screenAwareSize(12.0, context),
                 ),
               ),
             ],
@@ -783,6 +784,7 @@ class _PostViewPageState extends State<PostViewPage> {
               Text(
                 "상품설명",
                 style: TextStyle(
+                  fontSize: screenAwareSize(11.0, context),
                   color: Colors.grey[500],
                 ),
               ),
@@ -921,7 +923,7 @@ class _PostViewPageState extends State<PostViewPage> {
             ],
           ),
           SizedBox(height: screenAwareSize(15.0, context)),
-          Text(post.content, style: TextStyle(height: 1.2)),
+          Text(post.content, style: TextStyle(fontSize: screenAwareSize(11.0, context), height: 1.2)),
         ],
       ),
     );
@@ -1023,6 +1025,7 @@ class _PostViewPageState extends State<PostViewPage> {
           Text(
             '거래 선호 위치',
             style: TextStyle(
+              fontSize: screenAwareSize(11.0, context),
               color: Colors.grey[500],
             ),
           ),

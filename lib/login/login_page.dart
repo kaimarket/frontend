@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                 builder: (context) {
                   return Center(
                     child: Container(
-                      width: 340.0,
+                      width: screenAwareSize(340.0, context),
                       child: Column(
                         children: <Widget>[
                           SizedBox(height: screenAwareSize(75.0, context)),
@@ -144,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
           "SNS 로그인 후 카이스트 학생 인증을 하게 됩니다.",
           style: TextStyle(
             color: Colors.grey[400],
-            fontSize: 14.0,
+            fontSize: screenAwareSize(14.0, context),
           ),
           textAlign: TextAlign.center,
         )
