@@ -27,7 +27,7 @@ dependencies:
   multi_image_picker: ^4.3.4
   adhara_socket_io: ^0.2.0
   logger: ^0.7.0+2
-  dio: ^2.1.10
+  dio: ">=2.1.10 <6.0.0"
   shared_preferences: ^0.5.3+2
   carousel_pro: ^1.0.0
   firebase_messaging: ^5.1.6
@@ -37,18 +37,18 @@ dependencies:
   html: ^0.14.0+2
   intl: ^0.15.8
   equatable: ^0.6.1
-  bloc: ^1.0.0
-  flutter_bloc: ^1.0.0
+  bloc: ">=1.0.0 <7.0.0"
+  flutter_bloc: ">=1.0.0 <8.0.0"
   provider: ^3.0.0+1
-  cached_network_image: ^1.1.0
+  cached_network_image: ">=1.1.0 <3.0.0"
   date_format: ^1.0.6
   shimmer: ^1.0.0
   throttling: ^0.8.0
   flushbar: ^1.8.2
   after_layout: ^1.0.7+2
-  json_annotation: ^2.4.0
+  json_annotation: ">=2.4.0 <4.0.0"
   timeago: ^2.0.18
-  rxdart: ^0.22.1+1
+  rxdart: ">=0.22.1+1 <0.26.0"
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
